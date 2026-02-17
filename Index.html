@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+  <title>Aventura 3D</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div id="canvas-container"></div>
+  <div id="crosshair">✦</div>
+  <div id="dmg-flash"></div>
+
+  <!-- ── HUD Left ── -->
+  <div id="hud-left">
+    <div class="player-header">
+      <div class="player-avatar">🛡</div>
+      <div>
+        <div class="player-name">CAVALEIRO</div>
+        <div class="player-class">CLASSE: GUERREIRO</div>
+      </div>
+    </div>
+    <div class="hp-label">PONTOS DE VIDA</div>
+    <div id="hp-bar-bg"><div id="hp-bar"></div></div>
+    <div id="hp-text">100 / 100</div>
+
+    <div class="stat-row">
+      <span class="stat-icon">⚔️</span>
+      <span class="stat-lbl">FORÇA</span>
+      <div class="stat-bar-bg"><div class="stat-fill" style="width:80%;background:#ef4444;box-shadow:0 0 5px #ef4444"></div></div>
+      <span class="stat-num">8</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-icon">🛡️</span>
+      <span class="stat-lbl">DEFESA</span>
+      <div class="stat-bar-bg"><div class="stat-fill" style="width:60%;background:#3b82f6;box-shadow:0 0 5px #3b82f6"></div></div>
+      <span class="stat-num">6</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-icon">💨</span>
+      <span class="stat-lbl">AGILIDADE</span>
+      <div class="stat-bar-bg"><div class="stat-fill" style="width:90%;background:#a78bfa;box-shadow:0 0 5px #a78bfa"></div></div>
+      <span class="stat-num">9</span>
+    </div>
+
+    <div class="divider"></div>
+    <div class="hud-mini" style="color:#ffe066">💎 <span id="gem-count">0</span> / 12</div>
+    <div class="hud-mini" style="color:#f0f0f0">⭐ <span id="score-val">0</span> pts</div>
+    <div class="hud-mini" style="color:#ff7070">☠ <span id="kill-count">0</span> abatidos</div>
+  </div>
+
+  <!-- ── HUD Right ── -->
+  <div id="hud-right">
+    <div class="obj-title">🎯 MISSÃO</div>
+    <div id="obj1" style="color:#888">⬜ Coletar 12 gemas</div>
+    <div id="obj2" style="color:#444">⬜ Chegar ao castelo</div>
+    <div id="castle-hint">Vá ao castelo! 🏰</div>
+  </div>
+
+  <!-- Floating enemy labels container -->
+  <div id="enemy-labels"></div>
+
+  <!-- Enemy info popup -->
+  <div id="enemy-popup">
+    <div class="ep-header">
+      <div class="ep-icon" id="ep-icon">👺</div>
+      <div>
+        <div class="ep-name" id="ep-name">Goblin</div>
+        <div class="ep-type" id="ep-type">INIMIGO</div>
+      </div>
+    </div>
+    <div class="ep-hp-bar"><div class="ep-hp-fill" id="ep-hp-fill" style="width:100%;background:#ef4444"></div></div>
+    <div class="ep-stat"><span>❤️ VIDA</span><span id="ep-hp">—</span></div>
+    <div class="ep-stat"><span>⚔️ DANO</span><span id="ep-dmg">—</span></div>
+    <div class="ep-stat"><span>💨 VELOCIDADE</span><span id="ep-spd">—</span></div>
+    <div class="ep-stat"><span>⭐ RECOMPENSA</span><span id="ep-rew">—</span></div>
+    <div class="ep-warn" id="ep-warn">⚠ INIMIGO PRÓXIMO</div>
+  </div>
+
+  <!-- PC hint -->
+  <div id="hint">
+    <span class="yellow">🖱 Clique para capturar o mouse</span>
+    <span><b style="color:#fff">WASD</b> mover &nbsp;|&nbsp; <b style="color:#fff">E / Espaço</b> atacar &nbsp;|&nbsp; <b style="color:#fff">Mouse</b> câmera</span>
+  </div>
+  <div id="esc-hint">ESC para liberar o mouse</div>
+
+  <!-- Mobile controls -->
+  <div id="mobile-controls">
+    <div id="cam-zone"></div>
+    <div id="joystick-zone"><div id="joystick-inner">🕹</div></div>
+    <div id="btn-attack">⚔️</div>
+  </div>
+
+  <!-- End Overlay -->
+  <div id="overlay">
+    <div class="ov-icon" id="ov-icon">💀</div>
+    <div class="ov-title" id="ov-title">DERROTA</div>
+    <div class="ov-sub" id="ov-sub">Você foi derrotado pelos inimigos</div>
+    <div class="ov-score" id="ov-score" style="color:#ffe066"></div>
+    <div class="ov-detail" id="ov-detail"></div>
+    <button id="ov-btn" onclick="location.reload()">↺ JOGAR NOVAMENTE</button>
+  </div>
+
+  <!-- Three.js e lógica do jogo -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="game.js"></script>
+
+</body>
+</html>
